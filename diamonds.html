@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MR LEO - Diamonds</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090711;color:white;font-family:Arial}
+header{background:#050509;padding:20px;border-bottom:2px solid #e8b900}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:27px;color:#ffca05;font-weight:bold}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+a{color:white;text-decoration:none}
+.lang button{padding:9px;background:#292039;color:white;border:1px solid #ffca05;border-radius:6px}
+.lang .active{background:#ffca05;color:#090711}
+.hero{text-align:center;padding:35px 10px;background:radial-gradient(circle,#7133a5,#170c2c)}
+.hero h1{color:#ffca05;font-size:40px}
+.container{max-width:1000px;margin:auto;padding:20px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.product{background:linear-gradient(#291640,#100d18);border:1px solid #7754a0;border-radius:14px;padding:20px;text-align:center}
+.diamond{font-size:45px}
+.product h2{font-size:23px}
+.bonus{color:#5cffaa;font-weight:bold}
+.price{font-size:25px;color:#ffca05;font-weight:bold;margin:15px}
+button.buy{background:#ffca05;border:0;padding:13px 25px;border-radius:8px;font-weight:bold;cursor:pointer}
+form{background:#171321;border:1px solid #7754a0;border-radius:14px;padding:20px;margin-top:30px}
+input,select{width:100%;padding:13px;margin:9px 0;border-radius:7px;border:1px solid #7754a0;background:#292039;color:white}
+#message{color:#ffca05}
+footer{text-align:center;padding:25px;background:#050509;margin-top:30px}
+</style>
+</head>
+<body>
+<header>
+<div class="top">
+<div class="logo">💎 MR LEO</div>
+<nav>
+<a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+<a href="diamonds.html">DIAMONDS</a>
+<a href="booyah.html">BOOYAH PASS</a>
+</nav>
+<div class="lang">
+<button id="fr" class="active" onclick="changeLang('fr')">🇫🇷 FR</button>
+<button id="en" onclick="changeLang('en')">🇬🇧 EN</button>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<h1 id="title">💎 PACKS DIAMANTS</h1>
+<p id="subtitle">Choisis ton pack préféré !</p>
+</section>
+
+<main class="container">
+<div class="products">
+
+<div class="product">
+<div class="diamond">💎</div>
+<h2>100 + 10</h2>
+<p class="bonus">+10 BONUS</p>
+<p>110 Diamonds</p>
+<div class="price">$1.99</div>
+<button class="buy" onclick="choose('100 + 10 Diamonds - $1.99')" data-fr="ACHETER" data-en="BUY">ACHETER</button>
+</div>
+
+<div class="product">
+<div class="diamond">💎</div>
+<h2>310 + 31</h2>
+<p class="bonus">+31 BONUS</p>
+<p>341 Diamonds</p>
+<div class="price">$3.99</div>
+<button class="buy" onclick="choose('310 + 31 Diamonds - $3.99')" data-fr="ACHETER" data-en="BUY">ACHETER</button>
+</div>
+
+<div class="product">
+<div class="diamond">💎</div>
+<h2>520 + 52</h2>
+<p class="bonus">+52 BONUS</p>
+<p>572 Diamonds</p>
+<div class="price">$5.99</div>
+<button class="buy" onclick="choose('520 + 52 Diamonds - $5.99')" data-fr="ACHETER" data-en="BUY">ACHETER</button>
+</div>
+
+<div class="product">
+<div class="diamond">💎</div>
+<h2>1060 + 106</h2>
+<p class="bonus">+106 BONUS</p>
+<p>1166 Diamonds</p>
+<div class="price">$10.99</div>
+<button class="buy" onclick="choose('1060 + 106 Diamonds - $10.99')" data-fr="ACHETER" data-en="BUY">ACHETER</button>
+</div>
+
+<div class="product">
+<div class="diamond">💎</div>
+<h2>2180 + 218</h2>
+<p class="bonus">+218 BONUS</p>
+<p>2398 Diamonds</p>
+<div class="price">$20.99</div>
+<button class="buy" onclick="choose('2180 + 218 Diamonds - $20.99')" data-fr="ACHETER" data-en="BUY">ACHETER</button>
+</div>
+
+<div class="product">
+<div class="diamond">💎</div>
+<h2>5600 + 560</h2>
+<p class="bonus">+560 BONUS</p>
+<p>6160 Diamonds</p>
+<div class="price">$43.99</div>
+<button class="buy" onclick="choose('5600 + 560 Diamonds - $43.99')" data-fr="ACHETER" data-en="BUY">ACHETER</button>
+</div>
+
+</div>
+
+<form onsubmit="order(event)">
+<h2 id="formtitle">⚡ Informations de commande</h2>
+<input id="player" placeholder="ID joueur Free Fire" required>
+<select id="region" required>
+<option value="">Choisir une région</option>
+<option>Afrique</option>
+<option>Amérique du Nord</option>
+<option>Amérique du Sud</option>
+<option>Europe</option>
+<option>Asie</option>
+<option>Autre</option>
+</select>
+<input id="pack" placeholder="Pack choisi" readonly required>
+<button class="buy" type="submit" id="continue">CONTINUER</button>
+<p id="message">Démo uniquement : aucun paiement réel activé.</p>
+</form>
+</main>
+
+<footer>💎 MR LEO — FREE FIRE STORE<br>© 2026</footer>
+
+<script>
+let language='fr';
+
+function choose(product){
+document.getElementById('pack').value=product;
+document.querySelector('form').scrollIntoView({behavior:'smooth'});
+}
+
+function order(e){
+e.preventDefault();
+document.getElementById('message').textContent=
+'Démo : commande sélectionnée. Aucun paiement ni diamant envoyé.';
+}
+
+function changeLang(lang){
+language=lang;
+document.documentElement.lang=lang;
+document.querySelectorAll('[data-fr]').forEach(el=>{
+el.textContent=el.getAttribute('data-'+lang);
+});
+document.getElementById('title').textContent=
+lang==='fr'?'💎 PACKS DIAMANTS':'💎 DIAMOND PACKS';
+document.getElementById('subtitle').textContent=
+lang==='fr'?'Choisis ton pack préféré !':'Choose your favorite pack!';
+document.getElementById('formtitle').textContent=
+lang==='fr'?'⚡ Informations de commande':'⚡ Order Information';
+document.getElementById('player').placeholder=
+lang==='fr'?'ID joueur Free Fire':'Free Fire Player ID';
+document.getElementById('region').options[0].text=
+lang==='fr'?'Choisir une région':'Choose a region';
+document.getElementById('continue').textContent=
+lang==='fr'?'CONTINUER':'CONTINUE';
+document.getElementById('message').textContent=
+lang==='fr'?'Démo uniquement : aucun paiement réel activé.':'Demo only: no real payments enabled.';
+document.getElementById('fr').classList.toggle('active',lang==='fr');
+document.getElementById('en').classList.toggle('active',lang==='en');
+}
+</script>
+</body>
+</html>
