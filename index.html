@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MR LEO - Free Fire Store</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090711;color:white;font-family:Arial}
+header{background:#050509;padding:20px 5%;border-bottom:2px solid #e8b900}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.logo{font-size:30px;font-weight:bold;color:#ffca05}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold;font-size:13px}
+nav a:hover{color:#ffca05}
+.lang button{background:#292039;color:white;border:1px solid #ffca05;padding:9px;border-radius:6px;cursor:pointer}
+.lang button.active{background:#ffca05;color:#090711}
+.hero{min-height:450px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:35px 15px;background:radial-gradient(circle,#7133a5,#291345,#090711)}
+.hero h1{font-size:clamp(45px,9vw,85px);color:#ffca05;margin:10px}
+.hero h2{font-size:clamp(22px,5vw,38px);margin:10px}
+.hero p{color:#e5d5fa;font-size:18px}
+.hero button{background:#ffca05;color:#120c20;padding:15px 30px;border:0;border-radius:9px;font-weight:bold;font-size:16px;cursor:pointer}
+@media(max-width:600px){.top{justify-content:center}nav{justify-content:center}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="top">
+  <div class="logo">💎 MR LEO</div>
+  <nav>
+    <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+    <a href="diamonds.html" data-fr="DIAMANTS" data-en="DIAMONDS">DIAMANTS</a>
+    <a href="booyah.html" data-fr="BOOYAH PASS" data-en="BOOYAH PASS">BOOYAH PASS</a>
+    <a href="membership.html" data-fr="ABONNEMENTS" data-en="MEMBERSHIP">ABONNEMENTS</a>
+    <a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a>
+  </nav>
+  <div class="lang">
+    <button id="fr" class="active" onclick="changeLang('fr')">🇫🇷 FR</button>
+    <button id="en" onclick="changeLang('en')">🇬🇧 EN</button>
+  </div>
+</div>
+</header>
+
+<section class="hero">
+  <p id="welcome">BIENVENUE CHEZ</p>
+  <h1>MR LEO</h1>
+  <h2 id="subtitle">BOUTIQUE FREE FIRE</h2>
+  <p id="description">Diamants • Booyah Pass • Abonnements • Plus</p>
+  <button id="explore" onclick="location.href='diamonds.html'">
+    DÉCOUVRIR LA BOUTIQUE
+  </button>
+</section>
+
+<script>
+function changeLang(lang){
+  document.documentElement.lang=lang;
+
+  document.querySelectorAll('[data-fr]').forEach(item=>{
+    item.textContent=item.getAttribute('data-'+lang);
+  });
+
+  const texts={
+    fr:{
+      welcome:'BIENVENUE CHEZ',
+      subtitle:'BOUTIQUE FREE FIRE',
+      description:'Diamants • Booyah Pass • Abonnements • Plus',
+      explore:'DÉCOUVRIR LA BOUTIQUE'
+    },
+    en:{
+      welcome:'WELCOME TO',
+      subtitle:'FREE FIRE STORE',
+      description:'Diamonds • Booyah Pass • Membership • More',
+      explore:'EXPLORE STORE'
+    }
+  };
+
+  document.getElementById('welcome').textContent=texts[lang].welcome;
+  document.getElementById('subtitle').textContent=texts[lang].subtitle;
+  document.getElementById('description').textContent=texts[lang].description;
+  document.getElementById('explore').textContent=texts[lang].explore;
+
+  document.getElementById('fr').classList.toggle('active',lang==='fr');
+  document.getElementById('en').classList.toggle('active',lang==='en');
+
+  localStorage.setItem('mrleo-language',lang);
+}
+
+changeLang(localStorage.getItem('mrleo-language') || 'fr');
+</script>
+
+</body>
+</html>
