@@ -1,28 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - MR LEO</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080611;color:white;font-family:Arial,sans-serif}
+header{background:#05040a;padding:20px;text-align:center;border-bottom:2px solid #ffc400}
+header a{color:#ffc400;text-decoration:none;font-size:25px;font-weight:bold}
+main{max-width:600px;margin:45px auto;padding:25px}
+h1{text-align:center;color:#ffc400}
+p{text-align:center;color:#ccc}
+form{background:#171124;padding:25px;border-radius:14px}
+input,textarea{width:100%;padding:14px;margin:10px 0;border:1px solid #51406c;border-radius:8px;background:#090713;color:white}
+textarea{height:140px;resize:vertical}
+button{width:100%;padding:15px;background:#ffc400;color:#111;border:0;border-radius:8px;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.6}
+#status{text-align:center;margin-top:15px}
+footer{text-align:center;color:#aaa;padding:25px}
+</style>
+</head>
+<body>
+
+<header><a href="index.html">💎 MR LEO</a></header>
+
+<main>
+<h1>Contactez-nous / Contact Us</h1>
+<p>FR : Envoyez-nous votre message.<br>
+EN: Send us your message.</p>
+
+<form id="contact-form">
+<input name="name" placeholder="Votre nom / Your name" required>
+<input name="email" type="email" placeholder="Votre Gmail / Your email" required>
+<textarea name="message" placeholder="Votre message / Your message" required></textarea>
+<button id="send-btn" type="submit">Envoyer / Send</button>
+<p id="status"></p>
+</form>
+</main>
+
+<footer>© 2026 MR LEO - Free Fire Store</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <script>
-emailjs.init({
-  publicKey: "GDnoAo-FBhFIJDCb4"
-});
+const SERVICE_ID = "Mrleo_777";
+const TEMPLATE_ID = "7rkxdjp";
+const PUBLIC_KEY = "GDnoAo-FBhFIJDCb4";
 
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
+emailjs.init({publicKey: PUBLIC_KEY});
+
+document.getElementById("contact-form").addEventListener("submit", async function(e){
   e.preventDefault();
+  const button = document.getElementById("send-btn");
+  const status = document.getElementById("status");
 
-  const result = document.getElementById("result");
-  result.textContent = "Envoi en cours...";
+  button.disabled = true;
+  button.textContent = "Sending...";
+  status.textContent = "";
+
+  const data = {
+    name: this.name.value,
+    email: this.email.value,
+    message: this.message.value
+  };
 
   try {
-    await emailjs.send("Mrleo_777", "7rkxdjp", {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      message: document.getElementById("message").value
-    });
-
-    result.textContent = "Message envoyé avec succès ! / Message sent successfully!";
+    await emailjs.send(SERVICE_ID, TEMPLATE_ID, data);
+    status.textContent = "Message envoyé ! / Message sent!";
+    status.style.color = "#4ade80";
     this.reset();
-  } catch (error) {
-    result.textContent = "Erreur d'envoi. Réessayez / Sending error. Try again.";
-    console.error(error);
+  } catch(error) {
+    status.textContent = "Erreur. Réessayez / Error. Try again.";
+    status.style.color = "#ff7777";
   }
+
+  button.disabled = false;
+  button.textContent = "Envoyer / Send";
 });
 </script>
+</body>
+</html>
