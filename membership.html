@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR LEO - Membership</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080510;color:white;font-family:Arial,sans-serif}
+header{padding:20px;background:#080510;border-bottom:2px solid #ffc400;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:25px;font-weight:bold;color:#ffc400}
+nav a{color:white;text-decoration:none;margin:7px;font-size:13px}
+.hero{text-align:center;padding:50px 15px;background:linear-gradient(120deg,#211039,#7025a0,#211039)}
+h1{color:#ffc400}
+.container{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:25px 15px}
+.card{background:#211432;border:1px solid #75419c;border-radius:15px;padding:25px;text-align:center;width:100%;max-width:330px}
+.icon{font-size:55px}
+.price{font-size:32px;color:#ffc400;font-weight:bold;margin:20px}
+input,select{width:100%;padding:13px;margin:10px 0;border-radius:7px;border:1px solid #76518f;background:#100b19;color:white}
+button{background:#ffc400;color:#160e00;padding:14px 22px;border:0;border-radius:8px;font-weight:bold;cursor:pointer}
+.note{color:#bbb;font-size:13px}
+footer{text-align:center;padding:25px;color:#aaa}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">💎 MR LEO</div>
+<nav>
+<a href="index.html">ACCUEIL</a>
+<a href="diamonds.html">DIAMANTS</a>
+<a href="booyah.html">BOOYAH PASS</a>
+<a href="membership.html">ABONNEMENTS</a>
+<a href="contact.html">CONTACT</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>MEMBERSHIP</h1>
+<p>Choisissez votre abonnement Free Fire !</p>
+</section>
+
+<div class="container">
+
+<div class="card">
+<div class="icon">⭐</div>
+<h2>Weekly Membership</h2>
+<p>Abonnement hebdomadaire</p>
+<div class="price">$5.99</div>
+<form onsubmit="order(event,'Weekly Membership','$5.99')">
+<input type="text" placeholder="Votre Free Fire Player ID" required>
+<select required>
+<option value="">Choisir votre région</option>
+<option>LATAM</option>
+<option>Brazil</option>
+<option>Bangladesh</option>
+<option>CIS</option>
+<option>EU</option>
+<option>Indonesia</option>
+<option>MENA</option>
+<option>Philippines</option>
+<option>Singapore / Malaysia</option>
+<option>Taiwan</option>
+<option>Thailand</option>
+<option>Vietnam</option>
+</select>
+<button type="submit">ACHETER</button>
+</form>
+</div>
+
+<div class="card">
+<div class="icon">👑</div>
+<h2>Monthly Membership</h2>
+<p>Abonnement mensuel</p>
+<div class="price">$10.99</div>
+<form onsubmit="order(event,'Monthly Membership','$10.99')">
+<input type="text" placeholder="Votre Free Fire Player ID" required>
+<select required>
+<option value="">Choisir votre région</option>
+<option>LATAM</option>
+<option>Brazil</option>
+<option>Bangladesh</option>
+<option>CIS</option>
+<option>EU</option>
+<option>Indonesia</option>
+<option>MENA</option>
+<option>Philippines</option>
+<option>Singapore / Malaysia</option>
+<option>Taiwan</option>
+<option>Thailand</option>
+<option>Vietnam</option>
+</select>
+<button type="submit">ACHETER</button>
+</form>
+</div>
+
+</div>
+
+<p class="note" style="text-align:center" id="message"></p>
+<footer>© 2026 MR LEO - Free Fire Store</footer>
+
+<script>
+function order(e,product,price){
+e.preventDefault();
+document.getElementById('message').textContent=
+"Votre demande de "+product+" ("+price+") est préparée. Le système de commande sera connecté prochainement.";
+}
+</script>
+</body>
+</html>
