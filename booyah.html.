@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR LEO - Booyah Pass</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#080510;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+header{
+  background:#080510;
+  border-bottom:2px solid #ffc400;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.logo{color:#ffc400;font-size:25px;font-weight:bold}
+nav a{color:white;text-decoration:none;margin:8px;font-size:13px}
+.hero{
+  text-align:center;
+  padding:55px 15px;
+  background:linear-gradient(120deg,#211039,#7025a0,#211039);
+}
+h1{color:#ffc400;font-size:36px}
+.card{
+  max-width:430px;
+  margin:35px auto;
+  padding:28px;
+  background:#211432;
+  border:1px solid #75419c;
+  border-radius:15px;
+  text-align:center;
+}
+.pass{font-size:65px}
+.price{font-size:32px;color:#ffc400;font-weight:bold}
+input,select{
+  width:100%;
+  padding:13px;
+  margin:10px 0;
+  border-radius:7px;
+  border:1px solid #76518f;
+  background:#100b19;
+  color:white;
+}
+button{
+  background:#ffc400;
+  color:#160e00;
+  padding:14px 25px;
+  border:0;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.note{color:#bbb;font-size:13px}
+footer{text-align:center;padding:25px;color:#aaa}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">💎 MR LEO</div>
+  <nav>
+    <a href="index.html">ACCUEIL</a>
+    <a href="diamonds.html">DIAMANTS</a>
+    <a href="booyah.html">BOOYAH PASS</a>
+    <a href="membership.html">ABONNEMENTS</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>BOOYAH PASS</h1>
+  <p>Obtenez votre Booyah Pass Free Fire !</p>
+</section>
+
+<div class="card">
+  <div class="pass">🎟️</div>
+  <h2>Free Fire Booyah Pass</h2>
+  <p>Livraison sur votre compte avec votre Player ID.</p>
+  <div class="price">$4.99</div>
+
+  <form id="orderForm">
+    <input id="playerId" type="text"
+      placeholder="Votre Player ID Free Fire"
+      required>
+
+    <select id="region" required>
+      <option value="">Choisir votre région</option>
+      <option>LATAM</option>
+      <option>Brazil</option>
+      <option>Bangladesh</option>
+      <option>CIS</option>
+      <option>EU</option>
+      <option>Indonesia</option>
+      <option>MENA</option>
+      <option>Philippines</option>
+      <option>Singapore / Malaysia</option>
+      <option>Taiwan</option>
+      <option>Thailand</option>
+      <option>Vietnam</option>
+    </select>
+
+    <button type="submit">ACHETER</button>
+  </form>
+
+  <p class="note">
+    Ne partagez jamais votre mot de passe Free Fire.
+  </p>
+  <p class="note" id="message"></p>
+</div>
+
+<footer>© 2026 MR LEO - Free Fire Store</footer>
+
+<script>
+document.getElementById("orderForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const id=document.getElementById("playerId").value.trim();
+  const region=document.getElementById("region").value;
+
+  document.getElementById("message").textContent =
+    "Demande préparée ! ID : "+id+" | Région : "+region+
+    " | Booyah Pass : $4.99. Le système de commande sera connecté prochainement.";
+});
+</script>
+
+</body>
+</html>
